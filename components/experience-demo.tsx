@@ -142,17 +142,22 @@ const STEP_LABELS = [
 
 type Phase = "idle" | "thinking" | "answering" | "done";
 
+const FIRST_ANSWER_LEN = DEPARTMENTS[0].demos[0].answer.length;
+
 export function ExperienceDemo() {
   const [deptIdx, setDeptIdx] = useState(0);
   const [demoIdx, setDemoIdx] = useState(0);
-  const [phase, setPhase] = useState<Phase>("idle");
-  const [stepsDone, setStepsDone] = useState(0);
-  const [typed, setTyped] = useState(0);
+  // Start fully populated so the example is visible at a glance — no click required.
+  const [phase, setPhase] = useState<Phase>("done");
+  const [stepsDone, setStepsDone] = useState(STEP_LABELS.length);
+  const [typed, setTyped] = useState(FIRST_ANSWER_LEN);
   const [panel, setPanel] = useState<"none" | "report" | "podcast">("none");
   const [playing, setPlaying] = useState(false);
 
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const reduced = useRef(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const viewedRef = useRef(false);
 
   useEffect(() => {
     reduced.current =
@@ -170,72 +175,88 @@ export function ExperienceDemo() {
   const dept = DEPARTMENTS[deptIdx];
   const demo = dept.demos[demoIdx];
 
-  const reset = useCallback(() => {
-    clearTimers();
-    setPhase("idle");
-    setStepsDone(0);
-    setTyped(0);
-    setPanel("none");
-    setPlaying(false);
-  }, [clearTimers]);
+  const demoRef = useRef(demo);
+  demoRef.current = demo;
 
-  const run = useCallback(() => {
-    clearTimers();
-    setPanel("none");
-    setPlaying(false);
-    setTyped(0);
+  const run = useCallback(
+    (answer: string) => {
+      clearTimers();
+      setPanel("none");
+      setPlaying(false);
 
-    if (reduced.current) {
-      setStepsDone(STEP_LABELS.length);
-      setPhase("answering");
-      setTyped(demo.answer.length);
-      setPhase("done");
-      return;
-    }
+      if (reduced.current) {
+        setStepsDone(STEP_LABELS.length);
+        setTyped(answer.length);
+        setPhase("done");
+        return;
+      }
 
-    setPhase("thinking");
-    setStepsDone(0);
-    STEP_LABELS.forEach((_, i) => {
+      setTyped(0);
+      setPhase("thinking");
+      setStepsDone(0);
+      STEP_LABELS.forEach((_, i) => {
+        timers.current.push(
+          setTimeout(() => setStepsDone(i + 1), 600 * (i + 1)),
+        );
+      });
+
+      const startTyping = 600 * STEP_LABELS.length + 250;
       timers.current.push(
-        setTimeout(() => setStepsDone(i + 1), 600 * (i + 1)),
+        setTimeout(() => {
+          setPhase("answering");
+          let i = 0;
+          const tick = () => {
+            i += 2;
+            setTyped(Math.min(i, answer.length));
+            if (i < answer.length) {
+              timers.current.push(setTimeout(tick, 16));
+            } else {
+              setPhase("done");
+            }
+          };
+          tick();
+        }, startTyping),
       );
-    });
+    },
+    [clearTimers],
+  );
 
-    const startTyping = 600 * STEP_LABELS.length + 250;
-    timers.current.push(
-      setTimeout(() => {
-        setPhase("answering");
-        let i = 0;
-        const tick = () => {
-          i += 2;
-          setTyped(Math.min(i, demo.answer.length));
-          if (i < demo.answer.length) {
-            timers.current.push(setTimeout(tick, 16));
-          } else {
-            setPhase("done");
-          }
-        };
-        tick();
-      }, startTyping),
+  // Replay the reveal once when the demo first scrolls into view.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || reduced.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !viewedRef.current) {
+          viewedRef.current = true;
+          run(demoRef.current.answer);
+        }
+      },
+      { threshold: 0.45 },
     );
-  }, [clearTimers, demo.answer]);
+    io.observe(el);
+    return () => io.disconnect();
+  }, [run]);
 
   const selectDept = (i: number) => {
     if (i === deptIdx) return;
     setDeptIdx(i);
     setDemoIdx(0);
-    reset();
+    run(DEPARTMENTS[i].demos[0].answer);
   };
 
   const selectDemo = (i: number) => {
     setDemoIdx(i);
-    reset();
+    run(dept.demos[i].answer);
   };
 
-  const visibleAnswer = phase === "idle" ? "" : demo.answer.slice(0, typed);
+  const visibleAnswer = demo.answer.slice(0, typed);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line-strong bg-card shadow-[0_1px_0_rgba(0,0,0,0.02),0_30px_70px_-34px_rgba(38,64,105,0.4)]">
+    <div
+      ref={rootRef}
+      className="overflow-hidden rounded-2xl border border-line-strong bg-card shadow-[0_1px_0_rgba(0,0,0,0.02),0_30px_70px_-34px_rgba(38,64,105,0.4)]"
+    >
       {/* Window chrome */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-paper-deep/70 px-5 py-3">
         <div className="flex items-center gap-2">
@@ -271,7 +292,7 @@ export function ExperienceDemo() {
             <p className="flex-1 text-[15px] text-ink">{demo.q}</p>
           </div>
           <button
-            onClick={run}
+            onClick={() => run(demo.answer)}
             className="rounded-xl bg-navy px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-navy-deep"
           >
             {phase === "idle" ? "Ask" : "Ask again"}
