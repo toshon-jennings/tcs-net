@@ -71,6 +71,21 @@ change, on cheap models. (3) It improves over time as good answers get filed bac
 rewrite — a deliberate "human-in-the-loop" trust gate — and it's a newer approach than plain
 search, so we phase it in. Detail: [04-knowledge-layer-llm-wiki.md](04-knowledge-layer-llm-wiki.md).
 
+### D-7 — Who can add documents: a "steward" model
+**Chose:** documents get in two ways — staff drop files into **department Google Drive
+folders** (picked up automatically), or upload directly in the app. **Only designated
+department "stewards" can upload**; everyone else is read-only. Who is a reader, steward, or
+admin is controlled entirely through **Google Workspace groups** — the same place the school
+already manages its people.
+**Why:** keeps the knowledge base **curated and trustworthy** (no free-for-all that fills it
+with noise or outdated files), while using tools the school already runs, so there's no separate
+user-admin system to maintain. Permissions are enforced on every action, so no one can see or
+add beyond their department.
+**Trade-off:** a few people carry the upload responsibility, so each department needs at least
+one active steward. Sensitive material can be further restricted with an "access level" tag even
+inside a department. Detail:
+[01-system-architecture.md](01-system-architecture.md#3-data-ingestion-and-management).
+
 ---
 
 ## 3. How the experience is designed (UX/UI decisions)

@@ -68,6 +68,30 @@ put a unified billing gateway with a hard spend cap in front.
 4. **Indexing.** Open Notebook produces embeddings + full-text indexes in SurrealDB for
    hybrid retrieval.
 
+### Roles & who can contribute (steward model)
+
+Contribution is **curated, not open** (decision D-7): designated stewards upload for their
+department; everyone else is read-only. Roles map 1:1 to **Google Workspace groups**, which are
+the single source of truth — add/remove a person from a group and their access changes
+everywhere, with no separate user admin to maintain. The gateway resolves group membership to a
+role + permitted departments and enforces it on **every** request (upload, search, wiki edit);
+a user can never widen their own scope.
+
+| Role | Workspace group (example) | Can do |
+|---|---|---|
+| **Reader** (all staff) | `kb-<dept>-readers` | Ask & read within their department(s) |
+| **Steward / Contributor** | `kb-<dept>-contributors` | Upload to their department (Drive folder and/or UI) |
+| **Department Admin** | `kb-<dept>-admins` | Manage that dept's sources & metadata, curate the wiki, manage contributors |
+| **Global Admin / Knowledge Owner** | `kb-admins` | System config, cross-department, group management |
+
+- **Upload paths are gated by role.** Drive-folder contribution is governed by Google Drive
+  sharing on the department folder (mirrors the `*-contributors` group); UI upload checks the
+  same role at the gateway.
+- **`access_level`** allows restricted collections even within a department (e.g.
+  `HR-confidential`) so sensitive sources are withheld from ordinary readers.
+- **Trusted-wiki edits** require steward/admin review when the AI flags a contradiction
+  (human-in-the-loop), and all uploads/changes are written to the audit log.
+
 > **Privacy posture:** documents and embeddings live in self-hosted SurrealDB with
 > field-level encryption. Only the minimal retrieved snippets needed to answer a query are
 > sent to Claude (or any external LLM). PII-heavy collections can be pinned to on-prem
