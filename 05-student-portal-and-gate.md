@@ -1,9 +1,14 @@
 # Student Portal & the Staff/Student Gate
 
-> **Decision (D-11).** TCS-Net serves two audiences through **two entrances** with **one-way
-> access**: a **student gate** (get help + submit tickets) open to any signed-in school account,
-> and a **staff gate** (the full knowledge base + ticket management) restricted to staff.
-> **Staff can enter the student gate; students cannot enter the staff gate.**
+> **Decision (D-11, scoped by D-12).** TCS-Net serves two audiences through **two entrances**
+> with **one-way access**: a **student gate** (get help + submit requests) open to any signed-in
+> school account, and a **staff gate** (the full knowledge base + request management) restricted
+> to staff. **Staff can enter the student gate; students cannot enter the staff gate.**
+>
+> **Launch scope (D-12):** student requests are limited to **Operations — IT, Facilities, and
+> Food Service**. Sensitive categories (academic, wellbeing, safety) are **not** offered at
+> launch; they can be added later only by admin opt-in, as a restricted, designated-staff-only
+> channel (see §4).
 
 ---
 
@@ -61,40 +66,42 @@ cost), and pre-fills the ticket with what they already tried.
 
 ---
 
-## 4. Tickets
+## 4. Requests (Operations only at launch)
 
-**A ticket carries:** category, subject, description, optional attachment, submitter (from
-sign-in unless anonymous), created/updated timestamps, assigned department, status, and an
-audit trail.
+**A request carries:** category, subject, description, optional attachment, submitter (from
+sign-in), created/updated timestamps, assigned department, status, and an audit trail.
 
-**Categories (default):** IT · Facilities · Academic · Wellbeing/Counselling · **Safety
-(anonymous-eligible)** · Other. Each category routes to the relevant **department queue**,
-reusing the department model already in the architecture.
+**Launch categories (Operations):** **IT · Facilities · Food Service.** Each routes to the
+relevant Operations queue, reusing the department model already in the architecture. This keeps
+the launch unambiguous and uncontroversial — clear, practical requests with obvious owners.
 
 **Status lifecycle:** `New → In progress → Resolved` (with optional `Closed`). Students see the
-status of **their own** tickets in "My tickets"; staff work the queue from the staff gate.
+status of **their own** requests in "My requests"; staff work the queue from the staff gate.
 
-### Anonymous safety/tip channel (D-11)
-The **Safety / Wellbeing** category may be submitted **anonymously** — vital for bullying or
-safety reporting where a student may not come forward if named.
-- Anonymous tickets store **no submitter identity** and are routed to a designated safeguarding
-  queue.
-- Because there's no identity, there is **no "my tickets" tracking** for anonymous submissions
-  (an optional opaque reference code can be issued so a student can check back).
-- All other categories remain identified for accountability.
+### Deferred: sensitive channel (academic / wellbeing / safety) — admin opt-in only (D-12)
+Sensitive categories are **not part of the launch.** They can be enabled later **only by admin
+opt-in**, and would follow a **GoGuardian/Beacon-style** pattern:
+- Routed to a **designated, trained safeguarding group only** — never the general queue
+  (`access_level = safeguarding`).
+- A **Safety** category could be **anonymous-eligible** (no submitter identity; optional opaque
+  reference code), since a student may not come forward if named.
+- **Not a crisis system.** Any such channel must carry a prominent **"not for emergencies — if
+  someone is in danger, contact [X] now"** notice and a real response/coverage plan. This is a
+  safeguarding-lead decision, not a software default.
 
 ---
 
 ## 5. Privacy & safeguarding (students are minors)
 
-- **Data minimisation:** ticket content is stored in the app's own database (not sent to an
+- **Data minimisation:** request content is stored in the app's own database (not sent to an
   external model unless self-help is invoked, and then only the question + student-visible
   snippets).
-- **Sensitive routing:** Wellbeing/Safety tickets are visible only to the designated
-  safeguarding staff group, never the general queue.
-- **Anonymous means anonymous:** no IP/account linkage stored for anonymous safety tickets.
+- **Launch scope avoids sensitive data:** Operations-only requests (IT/Facilities/Food Service)
+  keep student submissions practical and low-risk by design.
+- **If a sensitive channel is later enabled (D-12):** route to the designated safeguarding group
+  only; if anonymous, store **no** IP/account linkage; add the "not for emergencies" notice.
 - **Compliance:** handle in line with the school's student-data-privacy obligations; keep the
-  full audit trail for accountability (identified tickets only).
+  full audit trail for accountability (identified requests only).
 
 ---
 
@@ -116,10 +123,11 @@ audience_tag        # on sources / wiki pages: 'staff' | 'student'
 ## 7. Build sequence (incremental)
 
 1. **Tier the gateway** (student vs staff from Workspace) and enforce on all routes.
-2. **Student gate shell** + ticket submission + "My tickets".
-3. **Department ticket queue** in the staff gate (list, assign, status).
+2. **Student gate shell** + Operations request submission (IT/Facilities/Food Service) + "My requests".
+3. **Operations request queue** in the staff gate (list, assign, status).
 4. **Self-help deflection** over student-visible content.
-5. **Anonymous safety channel** + safeguarding queue + reference codes.
+5. _(Deferred, admin opt-in)_ **Sensitive/safeguarding channel** — designated-staff routing,
+   optional anonymity, "not for emergencies" notice.
 
 ---
 

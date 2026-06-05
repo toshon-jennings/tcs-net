@@ -117,20 +117,30 @@ remains a fallback if the school prefers staying in its ecosystem.
 **Trade-off:** not the absolute most lifelike voice, but a sensible default that keeps audio
 affordable.
 
-### D-11 — A student gate with tickets, behind a one-way door
-**Chose:** add a **student gate** where students can get cited self-help and **submit support
-tickets** (IT, Facilities, Academic, Wellbeing, Safety, Other), with a **"my tickets"** status
-view. Access is **one-way**: students can use only the student gate; **staff can use both
-gates**, but students can never reach the staff knowledge base. Who is a student vs. staff comes
-from Google Workspace. The **Safety/Wellbeing** category can be submitted **anonymously**.
+### D-11 — A student gate with requests, behind a one-way door _(scoped by D-12)_
+**Chose:** add a **student gate** where students can get cited self-help and **submit requests**,
+with a **"my requests"** status view. Access is **one-way**: students can use only the student
+gate; **staff can use both gates**, but students can never reach the staff knowledge base. Who is
+a student vs. staff comes from Google Workspace.
 **Why:** (1) extends the system's value to the whole school, not just staff; (2) self-help
 **deflects** easy questions, saving staff time and cost; (3) the one-way gate keeps staff
-material strictly out of student reach while letting staff see exactly what students experience;
-(4) an anonymous safety channel matters for bullying/safeguarding, where a student may not come
-forward if named.
-**Trade-off:** more to build and govern (a ticket queue, routing, safeguarding handling), and
-student data means extra privacy care — students are minors. Detail:
+material strictly out of student reach while letting staff see exactly what students experience.
+**Trade-off:** more to build and govern (a request queue, routing), and student data means extra
+privacy care — students are minors. Detail:
 [05-student-portal-and-gate.md](05-student-portal-and-gate.md).
+
+### D-12 — Launch student requests as Operations only (defer anything sensitive)
+**Chose:** at launch, student requests are limited to **Operations — IT, Facilities, and Food
+Service**. Academic, wellbeing, and safety categories are **not** offered now. If the school
+wants them later, an admin enables a **restricted channel routed only to designated, trained
+staff** (modelled on GoGuardian/Beacon), with a clear **"not for emergencies"** notice.
+**Why:** Operations requests are practical, uncontroversial, and have obvious owners — the
+cleanest way to launch and earn trust. Sensitive matters carry real safeguarding and liability
+weight, so they should be a deliberate, admin-led decision with proper trained responders — not
+a default. "If admin wants more, they ask."
+**Trade-off:** students can't raise non-Operations issues through the tool at first — acceptable,
+and intentionally so. Detail:
+[05-student-portal-and-gate.md](05-student-portal-and-gate.md#4-requests-operations-only-at-launch).
 
 ---
 
@@ -162,7 +172,7 @@ student data means extra privacy care — students are minors. Detail:
 | UX-6 | Brand colours | Adopt City School's navy + gold over a warm "paper" background | Feels TCS-native and trustworthy from day one; the paper background keeps it calm and readable | Built (preview site) |
 | UX-7 | Interactive demo | A live, clickable "Ask" panel on the homepage showing the pipeline, a cited answer, and report/podcast outputs | Stakeholders care most about *seeing* the experience — so we show it, not just describe it | Built (preview site) |
 | UX-8 | Official logo + favicon | Use The City School's real logo lockup in the header/footer and the arch mark as the favicon | Psychological continuity and comfort — the site reads as genuinely the school's, not a generic tool | Built (preview site) |
-| UX-9 | Student portal + "two entrances" | Illustrative student help/ticket panel and a one-way staff/student gate explainer on the homepage | Shows stakeholders the student experience and makes the asymmetric access model easy to grasp | Built (preview site) |
+| UX-9 | Student portal + "two entrances" | Illustrative student help/request panel (Operations: IT, Facilities, Food Service) and a one-way staff/student gate explainer on the homepage | Shows stakeholders the student experience and makes the asymmetric access model easy to grasp | Built (preview site) |
 
 > When a decision changes, add a new row and mark the old one `Superseded by UX-n`.
 
@@ -181,7 +191,8 @@ student data means extra privacy care — students are minors. Detail:
 | 2026-06-05 | Site styled in TCS navy + gold; interactive "Ask" demo added | The preview now looks TCS-native and lets stakeholders *try* the experience — ask a question, see a cited answer, generate a report or audio overview |
 | 2026-06-05 | "Trust & access" section added to the site; hosting + podcast-voice decisions locked | Stakeholders can now read the security story on the site; the build stays fully hosted for now with OpenAI voices for audio |
 | 2026-06-05 | Official City School logo + favicon applied | The preview now carries the school's real brand, so it feels familiar and trustworthy at first glance |
-| 2026-06-05 | Student gate + ticketing designed and shown on the site | Students will be able to get help and submit tickets; staff see both gates, students only theirs (with an anonymous safety option) |
+| 2026-06-05 | Student gate + ticketing designed and shown on the site | Students will be able to get help and submit requests; staff see both gates, students only theirs |
+| 2026-06-05 | Student requests scoped to Operations (IT, Facilities, Food Service) | Launch stays simple and uncontroversial; sensitive topics deferred to a future admin opt-in, restricted to designated staff |
 
 *(Append new milestones as they land.)*
 

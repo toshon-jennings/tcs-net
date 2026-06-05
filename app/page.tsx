@@ -93,11 +93,12 @@ export default function HomePage() {
               Student gate
             </p>
             <h3 className="font-display mt-2 text-xl font-semibold text-navy">
-              Get help &amp; submit tickets
+              Get help &amp; submit requests
             </h3>
             <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
               Any student (or staff member) can ask a question, get a cited answer from
-              student-safe content, and file a ticket if they still need help.
+              student-safe content, and file an <span className="text-ink">Operations</span>{" "}
+              request — IT, Facilities or Food Service — if they still need help.
             </p>
           </div>
           <div className="rounded-2xl border border-line-strong bg-navy p-6 text-paper">

@@ -4,17 +4,12 @@ import { useState } from "react";
 
 type Tab = "help" | "ticket" | "mine";
 
-const CATEGORIES = [
-  "IT",
-  "Facilities",
-  "Academic",
-  "Wellbeing / Counselling",
-  "Safety (can be anonymous)",
-  "Other",
-];
+// Launch scope: Operations only (IT, Facilities, Food Service).
+const CATEGORIES = ["IT", "Facilities", "Food Service"];
 
 const MY_TICKETS = [
   { ref: "TCS-1042", subject: "Locker won't lock properly", cat: "Facilities", status: "In progress" },
+  { ref: "TCS-1039", subject: "Cafeteria card won't scan", cat: "Food Service", status: "New" },
   { ref: "TCS-1031", subject: "Can't log in to the library portal", cat: "IT", status: "Resolved" },
 ];
 
@@ -22,8 +17,6 @@ export function StudentPortalDemo() {
   const [tab, setTab] = useState<Tab>("help");
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [submitted, setSubmitted] = useState(false);
-
-  const anonymous = category.startsWith("Safety");
 
   return (
     <div className="overflow-hidden rounded-2xl border border-line-strong bg-card shadow-[0_1px_0_rgba(0,0,0,0.02),0_30px_70px_-34px_rgba(38,64,105,0.4)]">
@@ -38,7 +31,7 @@ export function StudentPortalDemo() {
           </span>
         </div>
         <span className="rounded-full border border-line-strong bg-card px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-gold-deep">
-          Student gate
+          Student gate · Operations
         </span>
       </div>
 
@@ -46,8 +39,8 @@ export function StudentPortalDemo() {
       <div className="flex gap-1 border-b border-line px-3 pt-3">
         {[
           ["help", "Get help"],
-          ["ticket", "Submit a ticket"],
-          ["mine", "My tickets"],
+          ["ticket", "Submit a request"],
+          ["mine", "My requests"],
         ].map(([id, label]) => (
           <button
             key={id}
@@ -96,19 +89,19 @@ export function StudentPortalDemo() {
                 onClick={() => setTab("ticket")}
                 className="rounded-full bg-navy px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-navy-deep"
               >
-                Submit a ticket →
+                Submit a request →
               </button>
             </div>
             <p className="mt-3 text-center text-xs text-muted">
-              Self-help answers come first — most quick questions never need a ticket.
+              Self-help answers come first — most quick questions never need a request.
             </p>
           </div>
         )}
 
-        {/* SUBMIT A TICKET */}
+        {/* SUBMIT A REQUEST */}
         {tab === "ticket" && !submitted && (
           <div className="space-y-4">
-            <Field label="Category">
+            <Field label="Category · Operations">
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -135,29 +128,16 @@ export function StudentPortalDemo() {
               />
             </Field>
 
-            {anonymous && (
-              <div className="flex items-start gap-3 rounded-lg border border-gold/40 bg-gold/10 p-3">
-                <span className="mt-0.5 text-gold-deep">🔒</span>
-                <p className="text-sm text-ink-soft">
-                  <span className="font-semibold text-ink">Submitted anonymously.</span> Safety
-                  concerns can be reported without your name — it routes straight to the
-                  safeguarding team.
-                </p>
-              </div>
-            )}
-
             <div className="flex items-center justify-between pt-1">
               <p className="text-xs text-muted">
                 Signed in as{" "}
-                <span className="text-ink-soft">
-                  {anonymous ? "— (anonymous)" : "a.student@cityschool.org"}
-                </span>
+                <span className="text-ink-soft">a.student@cityschool.org</span>
               </p>
               <button
                 onClick={() => setSubmitted(true)}
                 className="rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-navy-deep"
               >
-                Submit ticket
+                Submit request
               </button>
             </div>
           </div>
@@ -170,20 +150,11 @@ export function StudentPortalDemo() {
               ✓
             </div>
             <h4 className="font-display mt-4 text-lg font-semibold text-ink">
-              Ticket submitted
+              Request submitted
             </h4>
             <p className="mt-2 text-sm text-ink-soft">
-              {anonymous ? (
-                <>
-                  Reference <span className="font-mono text-navy">TCS-1058</span> — routed to the
-                  safeguarding team. Keep this code to check back.
-                </>
-              ) : (
-                <>
-                  Reference <span className="font-mono text-navy">TCS-1057</span> — routed to{" "}
-                  <span className="text-ink">{category}</span>. Track it under “My tickets”.
-                </>
-              )}
+              Reference <span className="font-mono text-navy">TCS-1057</span> — routed to{" "}
+              <span className="text-ink">{category}</span>. Track it under “My requests”.
             </p>
             <button
               onClick={() => setSubmitted(false)}
@@ -194,7 +165,7 @@ export function StudentPortalDemo() {
           </div>
         )}
 
-        {/* MY TICKETS */}
+        {/* MY REQUESTS */}
         {tab === "mine" && (
           <ul className="space-y-px overflow-hidden rounded-xl border border-line-strong bg-line-strong">
             {MY_TICKETS.map((t) => (
