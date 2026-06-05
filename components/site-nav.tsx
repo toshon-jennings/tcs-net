@@ -17,10 +17,10 @@ export function SiteNav() {
           className="group flex items-baseline gap-2"
           onClick={() => setOpen(false)}
         >
-          <span className="font-display text-2xl font-semibold tracking-tight text-pine">
+          <span className="font-display text-2xl font-semibold tracking-tight text-navy">
             TCS
           </span>
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-ochre">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-gold-deep">
             ·net
           </span>
         </Link>
@@ -33,7 +33,7 @@ export function SiteNav() {
                 key={link.href}
                 href={link.href}
                 className={`link-underline text-sm font-medium transition-colors ${
-                  active ? "text-pine" : "text-ink-soft hover:text-pine"
+                  active ? "text-navy" : "text-ink-soft hover:text-navy"
                 }`}
               >
                 {link.label}
@@ -44,7 +44,7 @@ export function SiteNav() {
             href="https://github.com/toshon-jennings/tcs-net"
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-line-strong px-4 py-1.5 text-sm font-medium text-ink transition-colors hover:border-pine hover:text-pine"
+            className="rounded-full border border-line-strong px-4 py-1.5 text-sm font-medium text-ink transition-colors hover:border-navy hover:text-navy"
           >
             Repository
           </a>
@@ -92,7 +92,7 @@ export function SiteNav() {
               href="https://github.com/toshon-jennings/tcs-net"
               target="_blank"
               rel="noreferrer"
-              className="text-base font-medium text-pine"
+              className="text-base font-medium text-navy"
             >
               Repository →
             </a>

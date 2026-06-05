@@ -8,10 +8,10 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <div className="flex items-baseline gap-2">
-              <span className="font-display text-2xl font-semibold text-pine">
+              <span className="font-display text-2xl font-semibold text-navy">
                 TCS
               </span>
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-ochre">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-gold-deep">
                 ·net
               </span>
             </div>
@@ -29,7 +29,7 @@ export function SiteFooter() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-ink-soft transition-colors hover:text-pine"
+                    className="text-sm text-ink-soft transition-colors hover:text-navy"
                   >
                     {link.label}
                   </Link>
@@ -46,7 +46,7 @@ export function SiteFooter() {
                   href="https://github.com/toshon-jennings/tcs-net"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-ink-soft transition-colors hover:text-pine"
+                  className="text-sm text-ink-soft transition-colors hover:text-navy"
                 >
                   Repository
                 </a>
@@ -56,7 +56,7 @@ export function SiteFooter() {
                   href="https://github.com/lfnovo/open-notebook"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-ink-soft transition-colors hover:text-pine"
+                  className="text-sm text-ink-soft transition-colors hover:text-navy"
                 >
                   Open Notebook
                 </a>

@@ -16,7 +16,7 @@ export default function StoryPage() {
         title={
           <>
             Knowledge the school already owns,{" "}
-            <span className="text-pine">put within reach.</span>
+            <span className="text-navy">put within reach.</span>
           </>
         }
         lead="Every school sits on years of policies, handbooks, guides, and hard-won answers. The hard part has never been having that knowledge — it's finding the right piece of it, quickly, and trusting what you find."
@@ -70,7 +70,7 @@ export default function StoryPage() {
                 ],
               ].map(([t, d]) => (
                 <li key={t} className="flex gap-4">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-deep" />
                   <span>
                     <strong className="text-ink">{t}.</strong>{" "}
                     <span className="text-ink-soft">{d}</span>
@@ -93,10 +93,10 @@ export default function StoryPage() {
 
         <div className="rule mt-16" />
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-          <Link href="/how-it-works" className="link-underline font-semibold text-pine">
+          <Link href="/how-it-works" className="link-underline font-semibold text-navy">
             How it works →
           </Link>
-          <Link href="/decisions" className="link-underline font-semibold text-pine">
+          <Link href="/decisions" className="link-underline font-semibold text-navy">
             The key decisions →
           </Link>
         </div>

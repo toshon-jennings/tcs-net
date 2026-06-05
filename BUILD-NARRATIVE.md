@@ -98,6 +98,8 @@ search, so we phase it in. Detail: [04-knowledge-layer-llm-wiki.md](04-knowledge
 | UX-3 | Department filter | Pre-set to the user's department; cross-dept only if role allows | Safe by default; no permissions to think about | Planned |
 | UX-4 | "Generate report" | Explicit button, not automatic | Keeps premium-cost actions deliberate | Planned |
 | UX-5 | "Generate podcast" | Explicit button with length cap | Audio is opt-in; controls the sneakiest cost | Planned |
+| UX-6 | Brand colours | Adopt City School's navy + gold over a warm "paper" background | Feels TCS-native and trustworthy from day one; the paper background keeps it calm and readable | Built (preview site) |
+| UX-7 | Interactive demo | A live, clickable "Ask" panel on the homepage showing the pipeline, a cited answer, and report/podcast outputs | Stakeholders care most about *seeing* the experience — so we show it, not just describe it | Built (preview site) |
 
 > When a decision changes, add a new row and mark the old one `Superseded by UX-n`.
 
@@ -112,6 +114,8 @@ search, so we phase it in. Detail: [04-knowledge-layer-llm-wiki.md](04-knowledge
 |------|-----------|--------------------------|
 | 2026-06-05 | Architecture, build spec, and cost strategy documented | The plan is set: what we're building, how Claude is used, and how costs stay controlled |
 | 2026-06-05 | Hybrid knowledge model decided (curated wiki + document search) | Answers will be more trustworthy and readable, and cheaper to produce per question |
+| 2026-06-05 | Stakeholder preview website live (GitHub Pages) | Anyone can visit a site that explains the project and shows the experience |
+| 2026-06-05 | Site styled in TCS navy + gold; interactive "Ask" demo added | The preview now looks TCS-native and lets stakeholders *try* the experience — ask a question, see a cited answer, generate a report or audio overview |
 
 *(Append new milestones as they land.)*
 

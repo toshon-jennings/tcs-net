@@ -17,7 +17,7 @@ export default function CostPage() {
         title={
           <>
             Powerful AI, on a{" "}
-            <span className="text-pine">predictable budget.</span>
+            <span className="text-navy">predictable budget.</span>
           </>
         }
         lead="Premium AI is genuinely useful — and genuinely easy to overspend on. So cost here is a design constraint, not an afterthought. Four mechanisms keep the bill in check, and one of them is a ceiling that simply cannot be crossed."
@@ -25,9 +25,9 @@ export default function CostPage() {
 
       {/* The cap */}
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <div className="grid gap-8 rounded-2xl border border-pine bg-pine p-8 text-paper md:grid-cols-[1fr_1.4fr] md:items-center md:p-10">
+        <div className="grid gap-8 rounded-2xl border border-navy bg-navy p-8 text-paper md:grid-cols-[1fr_1.4fr] md:items-center md:p-10">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ochre-soft">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold-soft">
               The safety net
             </p>
             <h2 className="font-display mt-3 text-3xl font-semibold leading-tight">
@@ -76,7 +76,7 @@ export default function CostPage() {
                   className={i % 2 === 0 ? "bg-card" : "bg-paper"}
                 >
                   <td className="border-b border-line px-5 py-4 align-top">
-                    <span className="font-mono text-sm font-medium text-pine">
+                    <span className="font-mono text-sm font-medium text-navy">
                       {t.tier}
                     </span>
                   </td>
@@ -125,7 +125,7 @@ export default function CostPage() {
                 key={t}
                 className="rounded-xl border border-line-strong bg-card p-6"
               >
-                <h3 className="font-display text-lg font-semibold text-pine">
+                <h3 className="font-display text-lg font-semibold text-navy">
                   {t}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-soft">{d}</p>
@@ -133,11 +133,11 @@ export default function CostPage() {
             ))}
           </div>
           <div className="mt-12 rounded-2xl border border-line-strong bg-card p-7">
-            <p className="font-mono text-xs uppercase tracking-[0.16em] text-ochre">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-gold-deep">
               The bottom line
             </p>
             <p className="font-display mt-3 text-xl leading-snug text-ink md:text-2xl">
-              The system <em className="text-pine">can</em> deliver premium-quality
+              The system <em className="text-navy">can</em> deliver premium-quality
               reports — but only pays premium prices for the small slice of work
               that warrants it, under a ceiling that can't be crossed.
             </p>
@@ -146,13 +146,13 @@ export default function CostPage() {
           <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
             <Link
               href="/how-it-works"
-              className="link-underline font-semibold text-pine"
+              className="link-underline font-semibold text-navy"
             >
               How it works →
             </Link>
             <Link
               href="/decisions"
-              className="link-underline font-semibold text-pine"
+              className="link-underline font-semibold text-navy"
             >
               The decisions behind this →
             </Link>

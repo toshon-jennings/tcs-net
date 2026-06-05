@@ -17,7 +17,7 @@ export default function DesignPage() {
         title={
           <>
             Designed to feel{" "}
-            <span className="text-pine">trustworthy and effortless.</span>
+            <span className="text-navy">trustworthy and effortless.</span>
           </>
         }
         lead="The interface has one job: make answers easy to get and easy to believe. These are the principles guiding it and the concrete decisions that follow from them."
@@ -31,10 +31,10 @@ export default function DesignPage() {
         <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line-strong bg-line-strong sm:grid-cols-2">
           {UX_PRINCIPLES.map((p, i) => (
             <div key={p.title} className="bg-card p-8">
-              <span className="font-mono text-sm text-ochre">
+              <span className="font-mono text-sm text-gold-deep">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="font-display mt-2 text-xl font-semibold text-pine">
+              <h3 className="font-display mt-2 text-xl font-semibold text-navy">
                 {p.title}
               </h3>
               <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
@@ -63,14 +63,14 @@ export default function DesignPage() {
                 className="grid gap-3 bg-card p-7 md:grid-cols-[auto_1fr_1.4fr] md:items-baseline md:gap-8"
               >
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-ochre">{d.id}</span>
+                  <span className="font-mono text-xs text-gold-deep">{d.id}</span>
                   <span className="font-display text-base font-semibold text-ink">
                     {d.element}
                   </span>
                 </div>
                 <p className="text-[15px] text-ink-soft">{d.decision}</p>
                 <p className="text-[15px] text-muted">
-                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-pine">
+                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-navy">
                     Why{" "}
                   </span>
                   {d.why}
@@ -97,8 +97,8 @@ export default function DesignPage() {
           well-made reference work the school is proud of — not a flashy gadget.
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          <Swatch name="Pine" hex="#1F4D3A" className="bg-pine text-paper" />
-          <Swatch name="Ochre" hex="#B1671C" className="bg-ochre text-paper" />
+          <Swatch name="Navy" hex="#33578F" className="bg-navy text-paper" />
+          <Swatch name="Gold" hex="#EFC547" className="bg-gold text-ink" />
           <Swatch
             name="Paper"
             hex="#F6F3EA"
@@ -108,7 +108,7 @@ export default function DesignPage() {
 
         <div className="rule mt-14" />
         <div className="mt-8">
-          <Link href="/story" className="link-underline font-semibold text-pine">
+          <Link href="/story" className="link-underline font-semibold text-navy">
             ← Back to the project story
           </Link>
         </div>

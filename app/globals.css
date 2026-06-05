@@ -2,18 +2,21 @@
 
 @theme {
   --color-paper: #f6f3ea;
-  --color-paper-deep: #efe9da;
+  --color-paper-deep: #ece6d7;
   --color-card: #fbf9f3;
-  --color-ink: #1a1d1a;
-  --color-ink-soft: #34372f;
-  --color-muted: #6f6a5d;
+  --color-ink: #1a1d22;
+  --color-ink-soft: #333a44;
+  --color-muted: #6c6e74;
   --color-line: #e2dccb;
   --color-line-strong: #d2c9b2;
-  --color-pine: #1f4d3a;
-  --color-pine-deep: #143528;
-  --color-pine-bright: #2f7355;
-  --color-ochre: #b1671c;
-  --color-ochre-soft: #d8a567;
+
+  /* City School brand: navy primary, gold secondary */
+  --color-navy: #33578f;
+  --color-navy-deep: #264069;
+  --color-navy-bright: #4e7bc0;
+  --color-gold: #efc547;
+  --color-gold-soft: #f4d77e;
+  --color-gold-deep: #8a6a12;
 
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
@@ -48,7 +51,7 @@ body::before {
 }
 
 ::selection {
-  background: var(--color-pine);
+  background: var(--color-navy);
   color: var(--color-paper);
 }
 
@@ -63,7 +66,7 @@ body::before {
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-ochre);
+  color: var(--color-gold-deep);
 }
 
 .rule {
@@ -99,10 +102,71 @@ body::before {
   animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Demo: caret, fade-in, equalizer */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  display: inline-block;
+  width: 0.6ch;
+  margin-left: 1px;
+  background: var(--color-navy);
+  color: transparent;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in {
+  animation: fade-in 0.45s ease forwards;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.wave-bar {
+  transform-origin: center;
+  transform: scaleY(0.25);
+}
+.wave-bar.playing {
+  animation: wave 0.9s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rise {
     animation: none;
     opacity: 1;
+  }
+  .fade-in {
+    animation: none;
+    opacity: 1;
+  }
+  .caret {
+    animation: none;
+  }
+  .wave-bar.playing {
+    animation: none;
+    transform: scaleY(0.6);
   }
   html {
     scroll-behavior: auto;

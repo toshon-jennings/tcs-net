@@ -45,7 +45,7 @@ export default function HowItWorksPage() {
         title={
           <>
             The architecture,{" "}
-            <span className="text-pine">explained without jargon.</span>
+            <span className="text-navy">explained without jargon.</span>
           </>
         }
         lead="Five building blocks work together so a staff member can ask a question and get a trustworthy answer. Here's each piece, the journey of a single question, and the idea that keeps it both smart and affordable."
@@ -63,10 +63,10 @@ export default function HowItWorksPage() {
               className="grid gap-2 bg-card p-7 md:grid-cols-[1fr_2fr] md:gap-10"
             >
               <div>
-                <h3 className="font-display text-lg font-semibold text-pine">
+                <h3 className="font-display text-lg font-semibold text-navy">
                   {b.name}
                 </h3>
-                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-ochre">
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-gold-deep">
                   {b.tech}
                 </p>
               </div>
@@ -88,7 +88,7 @@ export default function HowItWorksPage() {
             {STEPS.map((s, i) => (
               <li key={s.no} className="flex gap-6">
                 <div className="flex flex-col items-center">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-pine font-mono text-sm text-pine">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-navy font-mono text-sm text-navy">
                     {s.no}
                   </span>
                   {i < STEPS.length - 1 && (
@@ -141,7 +141,7 @@ export default function HowItWorksPage() {
               key={t}
               className="rounded-xl border border-line-strong bg-card p-6"
             >
-              <h3 className="font-display text-lg font-semibold text-pine">
+              <h3 className="font-display text-lg font-semibold text-navy">
                 {t}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-soft">{d}</p>
@@ -151,10 +151,10 @@ export default function HowItWorksPage() {
 
         <div className="rule mt-14" />
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-          <Link href="/cost" className="link-underline font-semibold text-pine">
+          <Link href="/cost" className="link-underline font-semibold text-navy">
             How costs stay controlled →
           </Link>
-          <Link href="/design" className="link-underline font-semibold text-pine">
+          <Link href="/design" className="link-underline font-semibold text-navy">
             The design decisions →
           </Link>
         </div>

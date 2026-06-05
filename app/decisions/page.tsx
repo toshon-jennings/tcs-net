@@ -15,7 +15,7 @@ export default function DecisionsPage() {
         eyebrow="Key Decisions"
         title={
           <>
-            Every major choice, <span className="text-pine">in the open.</span>
+            Every major choice, <span className="text-navy">in the open.</span>
           </>
         }
         lead="Good decisions are ones you can explain. Each entry below records what we chose, why we chose it, and what we gave up — so the reasoning is never a black box."
@@ -29,7 +29,7 @@ export default function DecisionsPage() {
               className="overflow-hidden rounded-2xl border border-line-strong bg-card"
             >
               <div className="flex items-center gap-4 border-b border-line bg-paper-deep/60 px-7 py-4">
-                <span className="font-mono text-sm font-medium text-ochre">
+                <span className="font-mono text-sm font-medium text-gold-deep">
                   {d.id}
                 </span>
                 <h2 className="font-display text-xl font-semibold text-ink">
@@ -40,10 +40,10 @@ export default function DecisionsPage() {
                 <Cell label="What we chose" tone="ink">
                   {d.chose}
                 </Cell>
-                <Cell label="Why" tone="pine">
+                <Cell label="Why" tone="navy">
                   {d.why}
                 </Cell>
-                <Cell label="The trade-off" tone="ochre">
+                <Cell label="The trade-off" tone="gold-deep">
                   {d.tradeoff}
                 </Cell>
               </div>
@@ -61,14 +61,14 @@ function Cell({
   children,
 }: {
   label: string;
-  tone: "ink" | "pine" | "ochre";
+  tone: "ink" | "navy" | "gold-deep";
   children: React.ReactNode;
 }) {
   const toneClass =
-    tone === "pine"
-      ? "text-pine"
-      : tone === "ochre"
-        ? "text-ochre"
+    tone === "navy"
+      ? "text-navy"
+      : tone === "gold-deep"
+        ? "text-gold-deep"
         : "text-ink-soft";
   return (
     <div className="bg-card p-7">

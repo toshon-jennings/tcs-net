@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PILLARS, STEPS } from "@/lib/content";
+import { ExperienceDemo } from "@/components/experience-demo";
 
 export default function HomePage() {
   return (
@@ -8,7 +9,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden">
         <div
           className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full opacity-[0.07] blur-3xl"
-          style={{ background: "var(--color-pine)" }}
+          style={{ background: "var(--color-navy)" }}
         />
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-20 md:pt-28">
           <p className="eyebrow rise" style={{ animationDelay: "0ms" }}>
@@ -19,7 +20,7 @@ export default function HomePage() {
             style={{ animationDelay: "80ms" }}
           >
             The school's knowledge,{" "}
-            <span className="text-pine">finally easy to ask.</span>
+            <span className="text-navy">finally easy to ask.</span>
           </h1>
           <p
             className="rise mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl"
@@ -34,81 +35,42 @@ export default function HomePage() {
             className="rise mt-10 flex flex-wrap items-center gap-4"
             style={{ animationDelay: "240ms" }}
           >
+            <a
+              href="#demo"
+              className="rounded-full bg-navy px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-navy-deep"
+            >
+              See it in action
+            </a>
             <Link
               href="/how-it-works"
-              className="rounded-full bg-pine px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-pine-deep"
-            >
-              See how it works
-            </Link>
-            <Link
-              href="/story"
               className="link-underline text-sm font-semibold text-ink"
             >
-              Read the project story →
+              How it works →
             </Link>
           </div>
+        </div>
+      </section>
 
-          {/* Mock answer card */}
-          <div
-            className="rise mt-16 overflow-hidden rounded-2xl border border-line-strong bg-card shadow-[0_1px_0_rgba(0,0,0,0.02),0_24px_60px_-32px_rgba(20,53,40,0.35)]"
-            style={{ animationDelay: "340ms" }}
-          >
-            <div className="flex items-center gap-2 border-b border-line px-5 py-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-ochre-soft" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-              <span className="ml-3 font-mono text-xs uppercase tracking-[0.18em] text-muted">
-                Preview · Science Department
-              </span>
+      {/* Interactive demo */}
+      <section id="demo" className="scroll-mt-24 border-y border-line bg-paper-deep">
+        <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
+          <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow">See it in action</p>
+              <h2 className="font-display mt-3 max-w-xl text-3xl font-semibold leading-tight text-ink md:text-4xl">
+                Ask a question. Watch a trusted answer appear.
+              </h2>
             </div>
-            <div className="grid gap-0 md:grid-cols-[1fr_1.2fr]">
-              <div className="border-b border-line p-6 md:border-b-0 md:border-r">
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-ochre">
-                  The question
-                </p>
-                <p className="font-display mt-3 text-xl leading-snug text-ink">
-                  “What's our current policy on make-up lab sessions for
-                  absent students?”
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Cited", "Department-scoped", "Grounded"].map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-line-strong px-3 py-1 text-xs font-medium text-ink-soft"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-pine">
-                  The answer
-                </p>
-                <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
-                  Students absent from a scheduled lab may complete a make-up
-                  session within{" "}
-                  <span className="text-ink">ten school days</span>, arranged
-                  through the department coordinator. Safety induction must be
-                  repeated if more than a term has passed.
-                </p>
-                <div className="mt-5 space-y-2">
-                  <div className="flex items-center gap-2 text-xs text-muted">
-                    <span className="font-mono text-pine">[1]</span>
-                    <span className="link-underline cursor-default">
-                      Science Dept Handbook 2025 — §4.2 Laboratory Attendance
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-muted">
-                    <span className="font-mono text-pine">[2]</span>
-                    <span className="link-underline cursor-default">
-                      Whole-School Attendance Policy — §7 Practical Subjects
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-muted">
+              An interactive preview of the real experience. Pick a department,
+              press <span className="font-semibold text-navy">Ask</span>, and try
+              turning an answer into a report or an audio overview.
+            </p>
           </div>
+          <ExperienceDemo />
+          <p className="mt-4 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+            Illustrative preview · sample documents · no live data
+          </p>
         </div>
       </section>
 
@@ -127,8 +89,8 @@ export default function HomePage() {
             {PILLARS.map((p) => (
               <div key={p.no} className="bg-card p-8">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-sm text-ochre">{p.no}</span>
-                  <h3 className="font-display text-xl font-semibold text-pine">
+                  <span className="font-mono text-sm text-gold-deep">{p.no}</span>
+                  <h3 className="font-display text-xl font-semibold text-navy">
                     {p.title}
                   </h3>
                 </div>
@@ -154,7 +116,7 @@ export default function HomePage() {
               className="grid items-start gap-4 bg-card p-7 md:grid-cols-[auto_1fr_2fr] md:items-center md:gap-10"
             >
               <span className="font-display text-3xl font-semibold text-line-strong md:text-4xl">
-                <span className="text-pine/30">{s.no}</span>
+                <span className="text-navy/30">{s.no}</span>
               </span>
               <h3 className="font-display text-lg font-semibold text-ink">
                 {s.title}
@@ -168,7 +130,7 @@ export default function HomePage() {
         <div className="mt-10">
           <Link
             href="/how-it-works"
-            className="link-underline text-sm font-semibold text-pine"
+            className="link-underline text-sm font-semibold text-navy"
           >
             See the full architecture in plain English →
           </Link>
@@ -176,10 +138,10 @@ export default function HomePage() {
       </section>
 
       {/* Cost callout */}
-      <section className="border-t border-line bg-pine text-paper">
+      <section className="border-t border-line bg-navy text-paper">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-[1.3fr_1fr] md:items-center">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-ochre-soft">
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-gold-soft">
               The honest part
             </p>
             <h2 className="font-display mt-4 text-3xl font-semibold leading-tight md:text-4xl">
@@ -193,7 +155,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/cost"
-              className="mt-8 inline-block rounded-full bg-paper px-6 py-3 text-sm font-semibold text-pine transition-colors hover:bg-paper-deep"
+              className="mt-8 inline-block rounded-full bg-paper px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-paper-deep"
             >
               See the cost approach
             </Link>
@@ -206,7 +168,7 @@ export default function HomePage() {
             ].map(([t, d]) => (
               <div
                 key={t}
-                className="rounded-xl border border-paper/15 bg-pine-deep/40 p-5"
+                className="rounded-xl border border-paper/15 bg-navy-deep/40 p-5"
               >
                 <p className="font-display text-lg font-semibold">{t}</p>
                 <p className="mt-1 text-sm text-paper/70">{d}</p>
