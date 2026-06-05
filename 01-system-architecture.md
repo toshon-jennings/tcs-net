@@ -93,6 +93,7 @@ a user can never widen their own scope.
 
 | Role | Workspace group (example) | Can do |
 |---|---|---|
+| **Student** | `students@…` (OU/group) | Student gate only: self-help over student-visible content + submit/track tickets. **Blocked from all staff routes.** |
 | **Reader** (all staff) | `kb-<dept>-readers` | Ask & read within their department(s) |
 | **Steward / Contributor** | `kb-<dept>-contributors` | Upload to their department (Drive folder and/or UI) |
 | **Department Admin** | `kb-<dept>-admins` | Manage that dept's sources & metadata, curate the wiki, manage contributors |
@@ -105,6 +106,12 @@ a user can never widen their own scope.
   `HR-confidential`) so sensitive sources are withheld from ordinary readers.
 - **Trusted-wiki edits** require steward/admin review when the AI flags a contradiction
   (human-in-the-loop), and all uploads/changes are written to the audit log.
+
+> **Two gates, one-way access.** Tiers are ordered `student < staff < admin`: staff routes
+> require tier ≥ staff (students blocked), student routes require tier ≥ student (so staff can
+> also use the student gate). This powers the **student portal** (self-help + ticketing,
+> including an anonymous safety channel) — full design in
+> [05-student-portal-and-gate.md](05-student-portal-and-gate.md).
 
 > **Privacy posture:** documents and embeddings live in self-hosted SurrealDB with
 > field-level encryption. Only the minimal retrieved snippets needed to answer a query are

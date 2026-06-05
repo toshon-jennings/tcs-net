@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PILLARS, STEPS } from "@/lib/content";
 import { ExperienceDemo } from "@/components/experience-demo";
+import { StudentPortalDemo } from "@/components/student-portal-demo";
 
 export default function HomePage() {
   return (
@@ -70,6 +71,59 @@ export default function HomePage() {
           <ExperienceDemo />
           <p className="mt-4 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
             Illustrative preview · sample documents · no live data
+          </p>
+        </div>
+      </section>
+
+      {/* Two entrances: staff & students */}
+      <section className="mx-auto max-w-5xl px-6 py-20">
+        <p className="eyebrow">For students, too</p>
+        <h2 className="font-display mt-4 max-w-2xl text-3xl font-semibold leading-tight text-ink md:text-4xl">
+          Two entrances, one community
+        </h2>
+        <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-ink-soft">
+          Staff get the full knowledge base. Students get a friendly place to find answers and
+          ask for help — and the door only swings one way.
+        </p>
+
+        {/* One-way gate diagram */}
+        <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="rounded-2xl border border-line-strong bg-card p-6">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-gold-deep">
+              Student gate
+            </p>
+            <h3 className="font-display mt-2 text-xl font-semibold text-navy">
+              Get help &amp; submit tickets
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+              Any student (or staff member) can ask a question, get a cited answer from
+              student-safe content, and file a ticket if they still need help.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-line-strong bg-navy p-6 text-paper">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-gold-soft">
+              Staff gate
+            </p>
+            <h3 className="font-display mt-2 text-xl font-semibold">
+              The full knowledge base
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-paper/80">
+              Staff only. Everything in the knowledge base, plus the ticket queue. Staff can also
+              use the student gate — but students can never enter here.
+            </p>
+          </div>
+        </div>
+        <p className="mt-5 flex items-center gap-2 text-sm text-muted">
+          <span className="rounded-full bg-navy/8 px-2.5 py-0.5 font-mono text-[11px] font-medium text-navy">
+            one-way
+          </span>
+          Staff → both gates · Students → student gate only, enforced on every request.
+        </p>
+
+        <div className="mt-10">
+          <StudentPortalDemo />
+          <p className="mt-4 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+            Illustrative preview · sample data · no live data
           </p>
         </div>
       </section>
