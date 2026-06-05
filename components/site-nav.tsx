@@ -20,7 +20,7 @@ export function SiteNav() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src={asset("/brand/logo.png")}
+            src={asset("/brand/logo-transparent.png")}
             alt="The City School"
             width={696}
             height={170}

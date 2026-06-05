@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <Image
-              src={asset("/brand/logo.png")}
+              src={asset("/brand/logo-transparent.png")}
               alt="The City School"
               width={696}
               height={170}
