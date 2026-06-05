@@ -109,6 +109,48 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      {/* Trust & access */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <p className="eyebrow">Trust &amp; access</p>
+        <h2 className="font-display mt-4 text-2xl font-semibold text-ink md:text-3xl">
+          Who gets in, and what it's allowed to read
+        </h2>
+        <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-ink-soft">
+          Confidence comes from knowing the boundaries. Access is built on the
+          accounts and permissions the school already manages — and the system
+          can only ever see the documents it's been explicitly given.
+        </p>
+        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line-strong bg-line-strong md:grid-cols-2">
+          {[
+            [
+              "Familiar sign-in",
+              "Staff log in with their existing school Google accounts. Each person automatically sees only their own department's content — no extra passwords, no way to widen their own access.",
+            ],
+            [
+              "Curated contributions",
+              "Only designated department “stewards” can add documents; everyone else is read-only. Who is a reader, steward, or admin is managed in Google Workspace groups — the school's existing tool.",
+            ],
+            [
+              "Reads only approved Shared Drives",
+              "The system never scans Google Drive. It reads from a fixed, admin-approved list of school-owned Shared Drives — and never from anyone's personal “My Drive” folders.",
+            ],
+            [
+              "Verifiable & logged",
+              "Every answer cites its source and can say “not found” rather than guess. Uploads and changes are recorded in an audit trail, so there's always accountability.",
+            ],
+          ].map(([t, d]) => (
+            <div key={t} className="bg-card p-7">
+              <h3 className="font-display text-lg font-semibold text-navy">
+                {t}
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+                {d}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Hybrid model */}
       <section className="mx-auto max-w-5xl px-6 py-16">
         <p className="eyebrow">The clever bit</p>

@@ -100,6 +100,23 @@ directly to the steward model.
 sharing a personal folder — a deliberate, healthy constraint. Detail:
 [01-system-architecture.md](01-system-architecture.md#3-data-ingestion-and-management).
 
+### D-9 — Stay fully hosted for the preview (revisit self-hosting later)
+**Chose:** during the preview, run all AI work through hosted providers (via the OpenRouter
+gateway). Don't stand up a school-owned model server (Ollama) yet.
+**Why:** no hardware to buy or maintain while we're still proving the idea; faster to launch.
+Self-hosting for zero-marginal-cost bulk work stays on the table once real usage justifies the
+investment.
+**Trade-off:** slightly higher per-use cost than running free models on our own machine —
+acceptable at preview scale, and capped by the OpenRouter spending limit.
+
+### D-10 — OpenAI for the podcast voices (premium voices gated)
+**Chose:** generate podcast-style audio with OpenAI's text-to-speech by default.
+**Why:** inexpensive, good quality, and multi-voice — it fits the budget story. Premium voices
+(ElevenLabs) stay available behind an admin flag for flagship content only; Google's TTS
+remains a fallback if the school prefers staying in its ecosystem.
+**Trade-off:** not the absolute most lifelike voice, but a sensible default that keeps audio
+affordable.
+
 ---
 
 ## 3. How the experience is designed (UX/UI decisions)
@@ -145,6 +162,7 @@ sharing a personal folder — a deliberate, healthy constraint. Detail:
 | 2026-06-05 | Hybrid knowledge model decided (curated wiki + document search) | Answers will be more trustworthy and readable, and cheaper to produce per question |
 | 2026-06-05 | Stakeholder preview website live (GitHub Pages) | Anyone can visit a site that explains the project and shows the experience |
 | 2026-06-05 | Site styled in TCS navy + gold; interactive "Ask" demo added | The preview now looks TCS-native and lets stakeholders *try* the experience — ask a question, see a cited answer, generate a report or audio overview |
+| 2026-06-05 | "Trust & access" section added to the site; hosting + podcast-voice decisions locked | Stakeholders can now read the security story on the site; the build stays fully hosted for now with OpenAI voices for audio |
 
 *(Append new milestones as they land.)*
 
@@ -154,11 +172,12 @@ sharing a personal folder — a deliberate, healthy constraint. Detail:
 
 > Things we owe stakeholders a decision on. Keep this honest and current.
 
-- **Self-hosted models (Ollama)?** Stand up a small GPU box for zero-marginal-cost bulk tasks,
-  or stay fully hosted for the preview? *(Affects cost and hardware.)*
-- **Custom UI vs. Open Notebook's built-in UI?** More branding/control vs. faster delivery.
-- **TTS provider for podcasts?** Cheaper default (OpenAI) vs. premium voices (ElevenLabs) vs.
-  staying in Google's ecosystem.
+- **Custom UI vs. Open Notebook's built-in UI for the real product?** The stakeholder *preview*
+  site is custom; the production app's UI approach is still open (branding/control vs. faster
+  delivery).
+
+_Resolved:_ self-hosted models → stay fully hosted for now (D-9); podcast voices → OpenAI TTS
+(D-10).
 
 ---
 

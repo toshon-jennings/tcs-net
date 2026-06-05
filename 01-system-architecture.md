@@ -47,8 +47,9 @@ put a unified billing gateway with a hard spend cap in front.
   long-form reports and hard synthesis only; cheaper models (Claude Haiku `claude-haiku-4-5`,
   Gemini Flash, DeepSeek, or self-hosted Llama) for query refinement, everyday Q&A, and short
   summaries.
-- **Embeddings:** self-hosted Ollama (zero marginal cost, fully on-prem) or a cheap hosted
-  embedding model.
+- **Embeddings:** a cheap hosted embedding model for the preview (D-9 — fully hosted for now);
+  self-hosted Ollama (zero marginal cost, fully on-prem) remains the planned option once usage
+  justifies the hardware.
 - **Text-to-Speech (podcasts):** OpenAI TTS by default (cheap); ElevenLabs gated behind an
   admin flag for flagship content; Gemini/Vertex TTS remains an option if the school prefers
   Google. 1–4 distinct speakers supported.
