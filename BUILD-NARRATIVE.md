@@ -146,6 +146,7 @@ affordable.
 | UX-5 | "Generate podcast" | Explicit button with length cap | Audio is opt-in; controls the sneakiest cost | Planned |
 | UX-6 | Brand colours | Adopt City School's navy + gold over a warm "paper" background | Feels TCS-native and trustworthy from day one; the paper background keeps it calm and readable | Built (preview site) |
 | UX-7 | Interactive demo | A live, clickable "Ask" panel on the homepage showing the pipeline, a cited answer, and report/podcast outputs | Stakeholders care most about *seeing* the experience — so we show it, not just describe it | Built (preview site) |
+| UX-8 | Official logo + favicon | Use The City School's real logo lockup in the header/footer and the arch mark as the favicon | Psychological continuity and comfort — the site reads as genuinely the school's, not a generic tool | Built (preview site) |
 
 > When a decision changes, add a new row and mark the old one `Superseded by UX-n`.
 
@@ -163,6 +164,7 @@ affordable.
 | 2026-06-05 | Stakeholder preview website live (GitHub Pages) | Anyone can visit a site that explains the project and shows the experience |
 | 2026-06-05 | Site styled in TCS navy + gold; interactive "Ask" demo added | The preview now looks TCS-native and lets stakeholders *try* the experience — ask a question, see a cited answer, generate a report or audio overview |
 | 2026-06-05 | "Trust & access" section added to the site; hosting + podcast-voice decisions locked | Stakeholders can now read the security story on the site; the build stays fully hosted for now with OpenAI voices for audio |
+| 2026-06-05 | Official City School logo + favicon applied | The preview now carries the school's real brand, so it feels familiar and trustworthy at first glance |
 
 *(Append new milestones as they land.)*
 

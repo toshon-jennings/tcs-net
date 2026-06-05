@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { NAV_LINKS } from "@/lib/content";
+import { asset } from "@/lib/asset";
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -14,25 +16,30 @@ export function SiteNav() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="group flex items-baseline gap-2"
+          className="flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <span className="font-display text-2xl font-semibold tracking-tight text-navy">
-            TCS
-          </span>
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-gold-deep">
-            ·net
+          <Image
+            src={asset("/brand/logo.png")}
+            alt="The City School"
+            width={696}
+            height={170}
+            priority
+            className="h-8 w-auto md:h-9"
+          />
+          <span className="hidden border-l border-line-strong pl-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted lg:inline">
+            Knowledge Base
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex lg:gap-8">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`link-underline text-sm font-medium transition-colors ${
+                className={`link-underline whitespace-nowrap text-sm font-medium transition-colors ${
                   active ? "text-navy" : "text-ink-soft hover:text-navy"
                 }`}
               >

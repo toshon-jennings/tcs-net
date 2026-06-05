@@ -21,7 +21,7 @@ const splineMono = Spline_Sans_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TCS·Net — Internal AI Knowledge Base",
+  title: "The City School — Internal Knowledge Base (TCS·Net)",
   description:
     "A preview of the internal AI knowledge base for school staff: trustworthy, cited answers over the school's own documents — with controlled costs and privacy by design.",
 };

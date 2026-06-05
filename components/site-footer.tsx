@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/content";
+import { asset } from "@/lib/asset";
 
 export function SiteFooter() {
   return (
@@ -7,14 +9,13 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-display text-2xl font-semibold text-navy">
-                TCS
-              </span>
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-gold-deep">
-                ·net
-              </span>
-            </div>
+            <Image
+              src={asset("/brand/logo.png")}
+              alt="The City School"
+              width={696}
+              height={170}
+              className="h-9 w-auto"
+            />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
               An internal AI knowledge base for school staff — trustworthy, cited
               answers over the school's own documents, with costs and privacy
