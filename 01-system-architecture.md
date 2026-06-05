@@ -56,12 +56,25 @@ put a unified billing gateway with a hard spend cap in front.
 
 ## 3. Data Ingestion and Management
 
-1. **Drive-based authoring (primary).** Staff drop documents into department-structured
-   Google Drive folders (e.g. `KB/Science`, `KB/Admin`, `KB/HR`). A sync worker pulls
-   new/changed files (Drive API change feed) and registers them as **sources** in the
-   corresponding Open Notebook notebook.
+1. **Drive-based authoring (primary).** Stewards add documents to department **Shared Drives**
+   (e.g. `KB · Science`, `KB · Admin`, `KB · HR`). A sync worker pulls new/changed files (Drive
+   API change feed) and registers them as **sources** in the corresponding Open Notebook
+   notebook.
+
+   **How it knows which folders to read — explicit allowlist, Shared Drives only (D-8):**
+   - A **folder registry** maps a fixed set of **Shared Drive IDs** → `department` +
+     default `access_level`. The worker watches **only** these IDs; anything not registered is
+     invisible to it. There is no domain-wide Drive scan.
+   - The worker runs as a **dedicated read-only service account** added as **Viewer to those
+     specific Shared Drives only**. That membership is the hard boundary — it is technically
+     incapable of reading a folder it has not been added to, and it is **not** granted a
+     domain-wide "read all Drive" scope.
+   - **Personal "My Drive" folders are never ingested.** Shared Drives are org-owned, so content
+     survives staff departure, governance/membership is central, and there's no risk of
+     scooping up a person's private or misfiled files. To contribute, a steward places the file
+     in the department Shared Drive — not by sharing a personal folder.
 2. **Direct upload (secondary).** The web UI supports drag-and-drop of PDFs, Office docs,
-   webpages, and audio — Open Notebook handles parsing and chunking.
+   webpages, and audio — Open Notebook handles parsing and chunking. Gated to stewards by role.
 3. **Metadata & scoping.** Every source carries `department`, `topic`, `access_level`, and
    `source_uri`. Department is the primary RBAC filter and is enforced at the gateway, not
    just in search ranking.

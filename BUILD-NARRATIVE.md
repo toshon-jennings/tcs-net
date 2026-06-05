@@ -86,6 +86,20 @@ one active steward. Sensitive material can be further restricted with an "access
 inside a department. Detail:
 [01-system-architecture.md](01-system-architecture.md#3-data-ingestion-and-management).
 
+### D-8 — Only org-owned Shared Drives, from an explicit allowlist
+**Chose:** TCS-Net never scans Google Drive. It reads from a **fixed, admin-approved list** of
+**Shared Drives** (one or more per department) — and **never from anyone's personal "My Drive"
+folders**. A dedicated read-only account is added only to those specific Shared Drives, which is
+the hard technical limit on what it can ever see.
+**Why:** (1) **Security** — no chance of accidentally ingesting someone's private or misfiled
+files; the system can only see folders it's explicitly been added to. (2) **Continuity** —
+Shared Drives are owned by the school, not an individual, so documents don't disappear when a
+staff member leaves. (3) **Clean governance** — folder membership is managed centrally and maps
+directly to the steward model.
+**Trade-off:** stewards must put contributions in the department Shared Drive rather than
+sharing a personal folder — a deliberate, healthy constraint. Detail:
+[01-system-architecture.md](01-system-architecture.md#3-data-ingestion-and-management).
+
 ---
 
 ## 3. How the experience is designed (UX/UI decisions)
