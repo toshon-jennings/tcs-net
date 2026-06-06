@@ -65,6 +65,21 @@ export function SiteNav() {
           >
             Repository
           </a>
+          <a
+            href="https://tcs.raiseaticket.com"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Raise a ticket"
+            className="flex items-center rounded-full border border-line-strong bg-card px-4 py-2 transition-colors hover:border-navy"
+          >
+            <Image
+              src={asset("/brand/raiseaticket-logo.png")}
+              alt="Raise a Ticket"
+              width={131}
+              height={30}
+              className="h-4 w-auto"
+            />
+          </a>
         </div>
 
         <button
@@ -112,6 +127,22 @@ export function SiteNav() {
               className="text-base font-medium text-navy"
             >
               Repository →
+            </a>
+            <a
+              href="https://tcs.raiseaticket.com"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+              aria-label="Raise a ticket"
+              className="flex w-fit items-center rounded-full border border-line-strong bg-card px-4 py-2"
+            >
+              <Image
+                src={asset("/brand/raiseaticket-logo.png")}
+                alt="Raise a Ticket"
+                width={131}
+                height={30}
+                className="h-4 w-auto"
+              />
             </a>
           </div>
         </div>
