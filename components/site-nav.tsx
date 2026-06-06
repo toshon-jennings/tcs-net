@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { NAV_LINKS } from "@/lib/content";
 import { asset } from "@/lib/asset";
+import { BuildingIcon } from "@/components/building-icon";
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -33,6 +34,15 @@ export function SiteNav() {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex lg:gap-8">
+          <Link
+            href="/"
+            aria-label="Home"
+            className={`transition-colors ${
+              pathname === "/" ? "text-navy" : "text-ink-soft hover:text-navy"
+            }`}
+          >
+            <BuildingIcon className="h-7 w-7" />
+          </Link>
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
